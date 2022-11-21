@@ -17,13 +17,15 @@ let night = document.querySelector("#night");
 let container = document.querySelector(".container");
 
 day.addEventListener("click",function(){
-  document.body.style.backgroundImage = "url(img/daywall.jpg)";
+  document.body.style.backgroundImage = "url(img/daywall.jpg)"; 
+  document.body.style.transition = "2s";
 })
 night.addEventListener("click",function(){
  document.body.style.backgroundImage = "url(img/nightwall.jpg)";
  h1.style.color = "#fff";
  document.body.style.color = "#fff"
  container.style.background = "rgba(0,0,0,0.5)";
+ document.body.style.transition = "2s";
 })
 
 function err(){

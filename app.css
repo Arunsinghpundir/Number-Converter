@@ -104,6 +104,19 @@ label {
   cursor: pointer;
 }
 
+#reset:hover,
+#swapBtn:hover,
+#converBtn:hover {
+  background: rgba(59, 78, 78, 0.733);
+}
+#reset:active,
+#swapBtn:active,
+#converBtn:active {
+  scale: 0.9;
+  transition: 0.2s;
+  font-size: 16px;
+}
+
 #output {
   height: 90px;
   width: 95%;
