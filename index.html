@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <h1 id="h1">Number-Convertor</h1>
+
+    <form class="container">
+      <div class="from-To">
+        <!-- From -->
+        <div id="fromBox">
+          <label for="fromBox">From</label>
+          <select id="data1">
+            <option value="decimal" selected>Decimal</option>
+            <option value="octal">Octal</option>
+            <option value="hexa">Hexa-Decimal</option>
+            <option value="binary">Binary</option>
+          </select>
+        </div>
+        <!-- To -->
+        <div id="toBox">
+          <label for="toBox">To</label>
+          <select id="data2">
+            <option value="decimal">Decimal</option>
+            <option value="octal">Octal</option>
+            <option value="hexa">Hexa-Decimal</option>
+            <option value="binary" selected>Binary</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- inputBox -->
+      <div class="input">
+        <label for="input" id="inputLable">Enter Decimal Number</label>
+        <input type="text" id="input" placeholder="Write Here..." />
+      </div>
+
+      <!-- button div -->
+      <div id="btnBox">
+        <button type="button" id="converBtn">Convert</button>
+        <button type="button" id="swapBtn">Swap</button>
+        <button type="reset" id="reset">Reset</button>
+      </div>
+
+      <!-- output box -->
+      <div class="output">
+        <label for="output"></label>
+        <textarea
+          placeholder="Output will be here..."
+          name="output"
+          id="output"
+          rows="3"
+          disabled
+          readonly
+        ></textarea>
+      </div>
+    </form>
+    <script src="app.js"></script>
+  </body>
+</html>
