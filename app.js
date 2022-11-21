@@ -19,13 +19,21 @@ let container = document.querySelector(".container");
 day.addEventListener("click",function(){
   document.body.style.backgroundImage = "url(img/daywall.jpg)"; 
   document.body.style.transition = "2s";
+  day.style.transform = `rotate(90deg)`;
+  day.style.transition = "2s";
+  night.style.transform = `rotate(0deg)`;
+  h1.style.color = "#000";
 })
 night.addEventListener("click",function(){
  document.body.style.backgroundImage = "url(img/nightwall.jpg)";
  h1.style.color = "#fff";
+ night.style.transform = `rotate(90deg)`;
+ night.style.transition = "2s";
+ day.style.transform = `rotate(0deg)`;
  document.body.style.color = "#fff"
  container.style.background = "rgba(0,0,0,0.5)";
  document.body.style.transition = "2s";
+ 
 })
 
 function err(){
@@ -71,10 +79,9 @@ swapBtn.addEventListener("click",function a(){
   input.value = d;
 })
 
-//for reset
+// for reset
 reset.addEventListener("click",function(){
-  output.value = "";
-  input.value = "";
+  output.innerText = "";
   output.style.border = "none";
 })
 
@@ -135,7 +142,6 @@ if(optionFrom.value == "binary" && optionTo.value == "decimal") {
     let binary = input.value;
     output.innerText += parseInt(binary, 2);
     output.style.border = "2px solid lightgreen";
-    console.log(parseInt(decimal, 2))
     } else {
       err();
     }

@@ -12,11 +12,12 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  color: aliceblue;
 }
 h1 {
   text-align: center;
   width: 100%;
-  color: #000;
+  color: black;
 }
 body {
   background-image: url(img/daywall.jpg);
@@ -75,6 +76,7 @@ body {
   border-style: none;
   letter-spacing: 2px;
   padding-left: 10px;
+  font-size: 20px;
 }
 
 #input:placeholder-shown {
@@ -96,7 +98,7 @@ label {
 #swapBtn,
 #converBtn {
   height: 40px;
-  width: 150px;
+  width: 120px;
   border-radius: 10px;
   border-style: none;
   background-color: rgba(22, 29, 29, 0.733);
@@ -113,7 +115,7 @@ label {
 #swapBtn:active,
 #converBtn:active {
   scale: 0.9;
-  transition: 0.2s;
+  transition: 0.1s;
   font-size: 16px;
 }
 
@@ -123,7 +125,7 @@ label {
   border-radius: 10px;
   padding: 10px;
   letter-spacing: 2px;
-  font-size: 15px;
+  font-size: 25px;
   font-weight: bold;
 }
 .output {
@@ -141,4 +143,33 @@ label {
   justify-content: space-between;
   align-items: center;
   margin: 0;
+}
+@media (max-width: 768px) {
+  .container {
+    height: 100%;
+    width: 90%;
+    margin: 0%;
+  }
+  h1 {
+    margin-bottom: 50px;
+  }
+  #fromBox,
+  #toBox {
+    margin: 0px 0px;
+  }
+  .input {
+    margin-top: 50px;
+    width: 100%;
+  }
+  #reset,
+  #swapBtn,
+  #converBtn {
+    margin-top: 20px;
+    height: 30px;
+    width: 90px;
+  }
+  #output {
+    margin-top: 30px;
+    font-weight: bold;
+  }
 }
