@@ -11,12 +11,32 @@ let output = document.querySelector("#output");
 //lable 
 let inputLabel = document.querySelector("#inputLable");
 let h1 = document.querySelector("#h1");
-//
+//mode
+let day =  document.querySelector("#day");
+let night = document.querySelector("#night");
+let container = document.querySelector(".container");
+
+day.addEventListener("click",function(){
+  document.body.style.backgroundImage = "url(img/daywall.jpg)";
+})
+night.addEventListener("click",function(){
+ document.body.style.backgroundImage = "url(img/nightwall.jpg)";
+ h1.style.color = "#fff";
+ document.body.style.color = "#fff"
+ container.style.background = "rgba(0,0,0,0.5)";
+})
 
 function err(){
-  output.style.color = "red";
-  output.value = "Enter a Valid Number";
-  output.style.border = "2px solid red";
+  setTimeout(()=>{
+    output.style.color = "red";
+    output.innerText = "Enter a Valid Number";
+    output.style.border = "2px solid red";
+  });
+  setTimeout(()=>{
+    output.style.color = "black";
+    output.innerText = "";
+    output.style.border = "1px solid black";
+  },2500);
 }
 function heading(){
     setInterval(()=>{
@@ -38,20 +58,22 @@ function heading(){
 heading();
 
 //for Swaping 
-swapBtn.addEventListener("click",function(){
+swapBtn.addEventListener("click",function a(){
   let  a = optionTo.value
   let b = optionFrom.value;
   optionFrom.value = a;
   optionTo.value = b;
   let c = input.value ;
-  let d = output.value;
+  let d = output.innerHTML;
   output.value = c;
   input.value = d;
 })
 
 //for reset
 reset.addEventListener("click",function(){
-  output.innerHTML = "";
+  output.value = "";
+  input.value = "";
+  output.style.border = "none";
 })
 
 //conversion
