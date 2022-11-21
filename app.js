@@ -11,7 +11,13 @@ let output = document.querySelector("#output");
 //lable 
 let inputLabel = document.querySelector("#inputLable");
 let h1 = document.querySelector("#h1");
+//
 
+function err(){
+  output.style.color = "red";
+  output.value = "Enter a Valid Number";
+  output.style.border = "2px solid red";
+}
 function heading(){
     setInterval(()=>{
         if(optionFrom.value == "decimal"){
@@ -28,11 +34,27 @@ function heading(){
         inputLabel.innerHTML = `Enter Binary Number`;
         }
     },3000)
-       
 }
 heading();
 
+//for Swaping 
+swapBtn.addEventListener("click",function(){
+  let  a = optionTo.value
+  let b = optionFrom.value;
+  optionFrom.value = a;
+  optionTo.value = b;
+  let c = input.value ;
+  let d = output.value;
+  output.value = c;
+  input.value = d;
+})
 
+//for reset
+reset.addEventListener("click",function(){
+  output.innerHTML = "";
+})
+
+//conversion
 convertBtn.addEventListener("click", function () {
   output.innerHTML = "";
 
@@ -45,9 +67,7 @@ convertBtn.addEventListener("click", function () {
       output.style.border = "2px solid lightgreen";
     }
    else {
-    output.style.color = "red";
-    output.value = "Enter a Valid Number";
-    output.style.border = "2px solid red";
+   err();
   }
 } else if(optionFrom.value == "decimal" && optionTo.value == "octal") {
     if(!isNaN(input.value)) {
@@ -57,9 +77,7 @@ convertBtn.addEventListener("click", function () {
       output.style.border = "2px solid lightgreen";
     }
    else {
-    output.style.color = "red";
-    output.value = "Enter a Valid Number";
-    output.style.border = "2px solid red";
+   err()
   }
 } else if(optionFrom.value == "decimal" && optionTo.value == "hexa") {
     if(!isNaN(input.value)) {
@@ -69,9 +87,7 @@ convertBtn.addEventListener("click", function () {
       output.style.border = "2px solid lightgreen";
     }
    else {
-    output.style.color = "red";
-    output.value = "Enter a Valid Number";
-    output.style.border = "2px solid red";
+    err();
   }
 } else if(optionFrom.value == "decimal" && optionTo.value == "decimal") {
     if(!isNaN(input.value)) {
@@ -81,9 +97,184 @@ convertBtn.addEventListener("click", function () {
       output.style.border = "2px solid lightgreen";
     }
    else {
-    output.style.color = "red";
-    output.value = "Enter a Valid Number";
-    output.style.border = "2px solid red";
+    err();
   }
+}
+
+//for binary conversion
+if(optionFrom.value == "binary" && optionTo.value == "decimal") {
+  let inputArr = (input.value).split("");
+  inputArr.forEach(i => {
+  if(!isNaN(input.value)) {
+    if(inputArr[i]==0 || inputArr[i]==1){
+    output.style.color = "Black";
+    let binary = input.value;
+    output.innerText += parseInt(binary, 2);
+    output.style.border = "2px solid lightgreen";
+    console.log(parseInt(decimal, 2))
+    } else {
+      err();
+    }
+  }
+  else {
+    err(); 
+}
+});
+} else if(optionFrom.value == "binary" && optionTo.value == "octal") {
+  let inputArr = (input.value).split("");
+  inputArr.forEach(i => {
+    if(!isNaN(input.value)) {
+      if(inputArr[i]==0 || inputArr[i]==1){
+      output.style.color = "Black";
+      let binary = input.value;
+      output.innerText += parseInt(binary, 2).toString(8); //parseInt(binary, 2).toString(8);
+      output.style.border = "2px solid lightgreen";
+      console.log(parseInt(decimal, 2))
+      } else {
+        err();
+      }
+    }
+    else {
+      err(); 
+    }
+  });
+} else if(optionFrom.value == "binary" && optionTo.value == "hexa") {
+  let inputArr = (input.value).split("");
+  inputArr.forEach(i => {
+    if(!isNaN(input.value)) {
+      if(inputArr[i]==0 || inputArr[i]==1){
+      output.style.color = "Black";
+      let binary = input.value;
+      output.innerText += parseInt(binary, 2).toString(16).toUpperCase(); //parseInt(binary, 2).toString(16);
+      output.style.border = "2px solid lightgreen";
+      console.log(parseInt(decimal, 2))
+      } else {
+        err();
+      }
+    }
+    else {
+      err(); 
+    }
+  });
+} else if(optionFrom.value == "binary" && optionTo.value == "binary") {
+  let inputArr = (input.value).split("");
+  inputArr.forEach(i => {
+    if(!isNaN(input.value)) {
+      if(inputArr[i]==0 || inputArr[i]==1){
+      output.style.color = "Black";
+      let binary = input.value;
+      output.innerText += binary //parseInt(binary, 2).toString(16);
+      output.style.border = "2px solid lightgreen";
+      console.log(parseInt(decimal, 2))
+      } else {
+        err();
+      }
+    }
+    else {
+      err(); 
+    }
+  });
+}
+
+//for octal conversion
+if(optionFrom.value == "octal" && optionTo.value == "decimal") {
+  if(!isNaN(input.value)) {
+    output.style.color = "Black";
+    let octal = input.value;
+    output.innerText = (parseInt(octal, 8)).toString(10);
+    output.style.border = "2px solid lightgreen";
+    console.log(parseInt(decimal, 2))
+  } 
+  else {
+    err(); 
+  }
+} else if(optionFrom.value == "octal" && optionTo.value == "octal") {
+  if(!isNaN(input.value)) {
+    output.style.color = "Black";
+    let octal = input.value;
+    output.innerText = octal;
+    output.style.border = "2px solid lightgreen";
+    console.log(parseInt(decimal, 2))
+  } 
+  else {
+    err(); 
+  }
+} else if(optionFrom.value == "octal" && optionTo.value == "hexa") {
+  if(!isNaN(input.value)) {
+    output.style.color = "Black";
+    let octal = input.value;
+    output.innerText = (parseInt(octal, 8)).toString(16).toUpperCase(); //(parseInt(text, 8)).toString(16);
+    output.style.border = "2px solid lightgreen";
+    console.log(parseInt(decimal, 2))
+  } 
+  else {
+    err(); 
+  }
+} else if(optionFrom.value == "octal" && optionTo.value == "binary") {
+  if(!isNaN(input.value)) {
+    output.style.color = "Black";
+    let octal = input.value;
+    output.innerText = (parseInt(octal, 8)).toString(2); //(parseInt(text, 8)).toString(2);
+    output.style.border = "2px solid lightgreen";
+    console.log(parseInt(decimal, 2))
+  } 
+  else {
+    err(); 
+  }
+}
+
+// For Hexadecimal conversion
+if(optionFrom.value == "hexa" && optionTo.value == "decimal") {
+  let inputArr = (input.value).split("");
+  inputArr.forEach(i => {
+    if(inputArr[i]>="a" || inputArr[i]<="f"){
+    output.style.color = "Black";
+    let hexa = input.value;
+    output.innerText +=  (parseInt(hexa, 16))
+    output.style.border = "2px solid lightgreen";
+    console.log(parseInt(decimal, 2))
+    } else {
+      err();
+    }
+});
+} else if(optionFrom.value == "hexa" && optionTo.value == "octal") {
+  let inputArr = (input.value).split("");
+  inputArr.forEach(i => {
+    if(inputArr[i]>="a" || inputArr[i]<="f"){
+    output.style.color = "Black";
+    let hexa = input.value;
+    output.innerText +=  parseInt(hexa, 16).toString(8);
+    output.style.border = "2px solid lightgreen";
+    console.log(parseInt(decimal, 2))
+    } else {
+      err();
+    }
+});
+} else if(optionFrom.value == "hexa" && optionTo.value == "binary") {
+  let inputArr = (input.value).split("");
+  inputArr.forEach(i => {
+    if(inputArr[i]>="a" || inputArr[i]<="f" ){
+    output.style.color = "Black";
+    let hexa = input.value;
+    output.innerText +=  (parseInt(hexa, 16)).toString(2);
+    output.style.border = "2px solid lightgreen";
+    console.log(parseInt(decimal, 2))
+    } else {
+      err();
+    }
+});
+} else if(optionFrom.value == "hexa" && optionTo.value == "hexa") {
+  let inputArr = (input.value).split("");
+  inputArr.forEach(i => {
+    if(inputArr[i]>="a" || inputArr[i]<="f"){
+    output.style.color = "Black";
+    let hexa = input.value;
+    output.innerText +=  hexa.toUpperCase();
+    output.style.border = "2px solid lightgreen";
+    console.log(parseInt(decimal, 2))
+    } else {
+      err();
+    }
+});
 }
 });
