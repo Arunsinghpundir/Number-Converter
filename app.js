@@ -75,13 +75,19 @@ swapBtn.addEventListener("click",function a(){
   optionTo.value = b;
   let c = input.value ;
   let d = output.innerHTML;
-  output.value = c;
+  output.innerHTML = c;
   input.value = d;
+  reset.addEventListener("click",function(){
+    output.innerText = "";
+    input.value = "";
+    output.style.border = "none";
+  })
 })
 
 // for reset
 reset.addEventListener("click",function(){
   output.innerText = "";
+  input.value = "";
   output.style.border = "none";
 })
 
