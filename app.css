@@ -24,6 +24,11 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+#data1:valid,
+#data2:valid {
+  cursor: pointer;
+}
+
 .container {
   padding: 10px 10px 20px 10px;
   height: auto;
@@ -101,22 +106,29 @@ label {
   width: 120px;
   border-radius: 10px;
   border-style: none;
-  background-color: rgba(22, 29, 29, 0.733);
+  background-color: #a5959533;
   color: aliceblue;
   cursor: pointer;
+  transition: 0.2s;
 }
-
+#reset:focus,
+#swapBtn:focus,
+#converBtn:focus {
+  border: 2px solid rgba(255, 235, 205, 0.493);
+}
 #reset:hover,
 #swapBtn:hover,
 #converBtn:hover {
-  background: rgba(59, 78, 78, 0.733);
+  background: #a5959533;
+  scale: 0.95;
+  box-shadow: 0 0px 15px 1px rgba(245, 245, 245, 0.295) inset;
 }
 #reset:active,
 #swapBtn:active,
 #converBtn:active {
-  scale: 0.9;
+  scale: 0.95;
   transition: 0.1s;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 #output {
@@ -143,6 +155,10 @@ label {
   justify-content: space-between;
   align-items: center;
   margin: 0;
+}
+/* .err:-webkit-input-placeholder  **/
+.err:placeholder-shown {
+  color: red;
 }
 @media (max-width: 768px) {
   .container {
