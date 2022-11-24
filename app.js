@@ -32,9 +32,7 @@ day.addEventListener("click", function(){
   day.style.transition = "2s";
   night.style.transform = `rotate(0deg)`;
   h1.style.color = "#000";
-  reset.style.transition = "3s";
-  swapBtn.style.transition = "3s";
-  convertBtn.style.transition = "3s";
+  h1.style.transition = "2s";
 })
 night.addEventListener("click",function(){
   night.style.transition = "3s";
@@ -46,6 +44,8 @@ night.addEventListener("click",function(){
  container.style.background = "rgba(0,0,0,0.5)";
  document.body.style.transition = "2s";
  swapBtn.style.background = " #a5959533";
+ h1.style.transition = "2s";
+
 })
 
 function err(){

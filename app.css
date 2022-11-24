@@ -38,7 +38,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.3);
   background: rgba(0, 0, 0, 0.397);
   border-radius: 16px;
-  box-shadow: 0 4px 35px 8px rgba(255, 255, 255, 0.1) inset;
+  box-shadow: 0 4px 60px 8px rgba(255, 255, 255, 0.151) inset;
 }
 .from-To {
   display: flex;
@@ -156,10 +156,7 @@ label {
   align-items: center;
   margin: 0;
 }
-/* .err:-webkit-input-placeholder  **/
-.err:placeholder-shown {
-  color: red;
-}
+
 @media (max-width: 768px) {
   .container {
     height: 100%;
