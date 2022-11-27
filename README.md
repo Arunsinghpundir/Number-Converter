@@ -4,7 +4,7 @@ Decimal-Binary, Decimal-Octal, Decimal-HexaDecimal and Vice-versa.
 
 ## Demo:
 
-<img src="/Number-Converter/img/Convertor.gif">
+<img src="img/Convertor.gif">
 <br/>
 <div align="center">
 <a href="https://numeric-conversion.netlify.app/" >
