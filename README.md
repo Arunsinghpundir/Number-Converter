@@ -31,4 +31,4 @@ To Options: Decimal, Hexadecimal, Octal, Binary
 <img src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-plain-wordmark.svg"  title="CSS3" alt="CSS" width="40" height="40"/>&nbsp;
 <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" title="JavaScript" alt="JavaScript" width="40"height="40"/>&nbsp;
 </div>
-#### I would ❤ to connect with you at <img src="https://github.com/devicons/devicon/blob/master/icons/linkedin/linkedin-plain-wordmark.svg"  title="LinkedIn" alt="LinkedIn" width="40" height="40"/>&nbsp;
+I would ❤ to connect with you at <img src="https://github.com/devicons/devicon/blob/master/icons/linkedin/linkedin-plain-wordmark.svg"  title="LinkedIn" alt="LinkedIn" width="60" height="60"/>&nbsp;
