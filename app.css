@@ -13,17 +13,17 @@ body {
   align-items: center;
   flex-direction: column;
   color: aliceblue;
+  background-image: url(img/daywall.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 h1 {
   text-align: center;
   width: 100%;
   color: black;
+  transition: 2s;
 }
-body {
-  background-image: url(img/daywall.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+
 #data1:valid,
 #data2:valid {
   cursor: pointer;
@@ -31,6 +31,7 @@ body {
 
 .container {
   padding: 10px 10px 20px 10px;
+  color: white;
   height: auto;
   width: 60%;
   background-color: antiquewhite;
@@ -156,7 +157,48 @@ label {
   align-items: center;
   margin: 0;
 }
+.day,
+.night {
+  transition: 2s;
+}
 
+/* Dynamic Css */
+.reverse {
+  transform: rotate(90deg);
+  transition: 2s;
+}
+.err {
+  color: red;
+  border: 2px solid red;
+}
+.success {
+  border: 2px solid lightgreen;
+  color: black;
+}
+.dayWall {
+  background-image: url(img/daywall.jpg);
+  color: #000;
+  transition: 2s;
+}
+.nightWall {
+  color: #fff;
+  transition: 2s;
+  background-image: url(img/nightwall.jpg);
+}
+.blackFont {
+  color: black;
+}
+.whiteFont {
+  color: white;
+}
+.bgNight {
+  background: rgba(0, 0, 0, 0.5);
+}
+.none {
+  border: none;
+}
+
+/* Media Query */
 @media (max-width: 768px) {
   .container {
     height: 100%;
