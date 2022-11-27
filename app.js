@@ -25,6 +25,7 @@ input.addEventListener("keypress", function(event) {
    convertBtn.click();
   }
 });
+
 day.addEventListener("click", function(){
   document.body.style.backgroundImage = "url(img/daywall.jpg)"; 
   document.body.style.transition = "2s";
@@ -120,8 +121,8 @@ reset.addEventListener("click",function(){
 })
 
 //conversion
-convertBtn.addEventListener("click", function check () {
-  blank();
+convertBtn.addEventListener("click", function() {
+ 
   output.innerHTML = "";
 
   //For Decimal conversion
@@ -221,6 +222,7 @@ if(optionFrom.value == "binary" && optionTo.value == "decimal") {
 
 //for octal conversion
 if(optionFrom.value == "octal" && optionTo.value == "decimal") {
+  
   if (!isNaN(Number('0O' + input.value))){
     output.style.color = "Black";
     let octal = input.value;
@@ -264,6 +266,7 @@ if(optionFrom.value == "octal" && optionTo.value == "decimal") {
 
 // For Hexadecimal conversion
 if(optionFrom.value == "hexa" && optionTo.value == "decimal") {
+
     if (!isNaN(Number('0x' + input.value))){
     output.style.color = "Black";
     let hexa = input.value;
@@ -300,4 +303,5 @@ if(optionFrom.value == "hexa" && optionTo.value == "decimal") {
       err();
     }
 }
+blank();
 });
