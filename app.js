@@ -1,5 +1,5 @@
-// Buttons
 'use strict'
+// Buttons 
 let reset = document.querySelector("#reset");
 let swapBtn = document.querySelector("#swapBtn");
 let convertBtn = document.querySelector("#converBtn");
@@ -11,12 +11,11 @@ let input = document.querySelector("#input");
 let output = document.querySelector("#output");
 //lable 
 let inputLabel = document.querySelector("#inputLable");
-let h1 = document.querySelector("#h1");
+let h1 = document.querySelector(".h1");
 //mode
-let day =  document.querySelector("#day");
-let night = document.querySelector("#night");
+let day =  document.querySelector(".day");
+let night = document.querySelector(".night");
 let container = document.querySelector(".container");
-
 
  // If the user presses the "Enter" key on the keyboard
 input.addEventListener("keypress", function(event) {
@@ -27,55 +26,45 @@ input.addEventListener("keypress", function(event) {
 });
 
 day.addEventListener("click", function(){
-  document.body.style.backgroundImage = "url(img/daywall.jpg)"; 
-  document.body.style.transition = "2s";
-  day.style.transform = `rotate(90deg)`;
-  day.style.transition = "2s";
-  night.style.transform = `rotate(0deg)`;
-  h1.style.color = "#000";
-  h1.style.transition = "2s";
+  document.body.classList.add("dayWall");
+  document.body.classList.remove("nightWall");
+  day.classList.add("reverse");
+  night.classList.remove("reverse");
+  h1.classList.add("blackFont");
+  h1.classList.remove('whiteFont');
+  container.classList.remove("bgNight");
+  container.classList.add("bgDay");
 })
 night.addEventListener("click",function(){
-  night.style.transition = "3s";
- document.body.style.backgroundImage = "url(img/nightwall.jpg)";
- h1.style.color = "#fff";
- night.style.transform = `rotate(90deg)`;
- day.style.transform = `rotate(0deg)`;
- document.body.style.color = "#fff"
- container.style.background = "rgba(0,0,0,0.5)";
- document.body.style.transition = "2s";
- swapBtn.style.background = " #a5959533";
- h1.style.transition = "2s";
-
+  document.body.classList.add("nightWall");
+  document.body.classList.remove("dayWall");
+  h1.classList.toggle('whiteFont');
+  night.classList.add("reverse")
+  day.classList.remove("reverse");
+  container.classList.toggle("bgNight");
 })
 
-function err(){
-  setTimeout(()=>{
-    output.placeholder = "Enter a Valid Number";
-    output.style.color = "red";
-    output.style.border = "2px solid red";
-  });
-  setTimeout(()=>{
-    output.style.color = "";
-    output.placeholder = "";
-    output.style.border = "1px solid black";
-  },1000);
+function err(){  
+  output.classList.remove("none")
+  output.classList.remove("success");
+  output.classList.add("err");
+  output.placeholder = "Enter a Valid Number";
 }
+
+function success(){
+  output.classList.add("success");
+  output.classList.remove("err");
+  output.classList.remove("none")
+};
 
 function blank(){
   if(input.value === ""){
-    setTimeout(()=>{
-      output.placeholder = "Enter a Number";
-      output.style.color = "red";
-      output.style.border = "2px solid red";
-      output.innerText = "";
-    });
-    setTimeout(()=>{
-      output.style.color = "";
-      output.placeholder = "";
-      output.style.border = "1px solid black";
-    },1000);
-  };
+    output.classList.remove("success");
+    output.classList.add("err");
+    output.placeholder = "Enter a Number";  
+    output.innerText = ""; 
+    output.classList.remove("none")
+  }
 }
 function heading(){
     setInterval(()=>{
@@ -98,18 +87,18 @@ heading();
 
 //for Swaping 
 swapBtn.addEventListener("click",function(){
-  let  a = optionTo.value
-  let b = optionFrom.value;
-  optionFrom.value = a;
-  optionTo.value = b;
-  let c = input.value ;
-  let d = output.innerHTML;
-  output.innerHTML = c;
-  input.value = d;
+  let  valueOfTo = optionTo.value
+  let valueOfFrom = optionFrom.value;
+  optionFrom.value = valueOfTo;
+  optionTo.value = valueOfFrom;
+  let inputValue = input.value ;
+  let outputvalue = output.innerHTML;
+  output.innerHTML = inputValue;
+  input.value = outputvalue;
   reset.addEventListener("click",function(){
     output.innerText = "";
     input.value = "";
-    output.style.border = "none";
+    output.classList.add("none")
   })
 })
 
@@ -117,51 +106,44 @@ swapBtn.addEventListener("click",function(){
 reset.addEventListener("click",function(){
   output.innerText = "";
   input.value = "";
-  output.style.border = "none";
+  output.classList.add("none")
 })
 
 //conversion
 convertBtn.addEventListener("click", function() {
- 
   output.innerHTML = "";
-
   //For Decimal conversion
+  let inputValueDecimal = isNaN(input.value);
+  let decimal = +input.value;
+
   if(optionFrom.value == "decimal" && optionTo.value == "binary") {
-    if(!isNaN(input.value)) {
-      output.style.color = "Black";
-      let decimal = +input.value;
+    if(!inputValueDecimal) {
+      success();
       output.innerText += decimal.toString(2);
-      output.style.border = "2px solid lightgreen";
     }
    else {
    err();
   }
 } else if(optionFrom.value == "decimal" && optionTo.value == "octal") {
-  if(!isNaN(input.value)) {
-      output.style.color = "Black";
-      let decimal = +input.value;
+  if(!inputValueDecimal) {
+      success();
       output.innerText += decimal.toString(8);
-      output.style.border = "2px solid lightgreen";
     }
    else {
    err()
   }
 } else if(optionFrom.value == "decimal" && optionTo.value == "hexa") {
-    if(!isNaN(input.value)) {
-      output.style.color = "Black";
-      let decimal = +input.value;
+    if(!inputValueDecimal) {
+      success();
       output.innerText += decimal.toString(16).toUpperCase();
-      output.style.border = "2px solid lightgreen";
     }
    else {
     err();
   }
 } else if(optionFrom.value == "decimal" && optionTo.value == "decimal") {
-    if(!isNaN(input.value)) {
-      output.style.color = "Black";
-      let decimal = input.value;
+    if(!inputValueDecimal) {
+      success();
       output.innerText += decimal
-      output.style.border = "2px solid lightgreen";
     }
    else {
     err();
@@ -169,14 +151,16 @@ convertBtn.addEventListener("click", function() {
 }
 
 //for binary conversion
+let binary = input.value;
+//spiliting each value into an array to check
+let inputArr = (input.value).split("");
+// prefix check if number have alpha numeric value or giver number is binary or not
+let inputValueBinary = isNaN(Number("0B"+ input.value));
 if(optionFrom.value == "binary" && optionTo.value == "decimal") {
-  let inputArr = (input.value).split("");
   inputArr.forEach(i => {
-  if(!isNaN(Number("0B"+ input.value))) { //check if number have alpha numeric value or giver number is binary or not
-    output.style.color = "Black";
-    let binary = input.value;
+  if(!inputValueBinary) { 
+    success();
     output.innerText += parseInt(binary, 2);
-    output.style.border = "2px solid lightgreen";
     } else {
       err();
     }
@@ -184,36 +168,27 @@ if(optionFrom.value == "binary" && optionTo.value == "decimal") {
 } else if(optionFrom.value == "binary" && optionTo.value == "octal") {
   let inputArr = (input.value).split("");
   inputArr.forEach(i => {
-    if(!isNaN(Number("0B"+ input.value))) {
-      output.style.color = "Black";
-      let binary = input.value;
-      output.innerText += parseInt(binary, 2).toString(8); //parseInt(binary, 2).toString(8);
-      output.style.border = "2px solid lightgreen";
-
+    if(!inputValueBinary) {
+      success();
+      output.innerText += parseInt(binary, 2).toString(8);  // read
       } else {
         err();
       }
   });
 } else if(optionFrom.value == "binary" && optionTo.value == "hexa") {
-  let inputArr = (input.value).split("");
   inputArr.forEach(i => {
-    if(!isNaN(Number("0B"+ input.value))){
-      output.style.color = "Black";
-      let binary = input.value;
-      output.innerText += parseInt(binary, 2).toString(16).toUpperCase(); //parseInt(binary, 2).toString(16);
-      output.style.border = "2px solid lightgreen";
+    if(!inputValueBinary){
+      success();
+      output.innerText += parseInt(binary, 2).toString(16).toUpperCase();
       } else {
         err();
       }
   });
 } else if(optionFrom.value == "binary" && optionTo.value == "binary") {
-  let inputArr = (input.value).split("");
   inputArr.forEach(i => {
-    if(!isNaN(Number("0B"+ input.value))) {
-      output.style.color = "Black";
-      let binary = input.value;
-      output.innerText += binary //parseInt(binary, 2).toString(16);
-      output.style.border = "2px solid lightgreen";
+    if(!inputValueBinary) {
+     success();
+      output.innerText += binary;
       } else {
         err();
       }
@@ -221,43 +196,36 @@ if(optionFrom.value == "binary" && optionTo.value == "decimal") {
 }
 
 //for octal conversion
+let octal = input.value;
+let inputValueOctal = isNaN(Number('0O' + input.value));
 if(optionFrom.value == "octal" && optionTo.value == "decimal") {
-  
-  if (!isNaN(Number('0O' + input.value))){
-    output.style.color = "Black";
-    let octal = input.value;
+  if (!inputValueOctal){
+    success();
     output.innerText = (parseInt(octal, 8));
-    output.style.border = "2px solid lightgreen";
   } 
   else {
     err(); 
   }
 } else if(optionFrom.value == "octal" && optionTo.value == "octal") {
-  if (!isNaN(Number('0O' + input.value))){
-    output.style.color = "Black";
-    let octal = input.value;
+  if (!inputValueOctal){
+    success();
     output.innerText = octal;
-    output.style.border = "2px solid lightgreen";
   } 
   else {
     err(); 
   }
 } else if(optionFrom.value == "octal" && optionTo.value == "hexa") {
-  if (!isNaN(Number('0O' + input.value))){
-    output.style.color = "Black";
-    let octal = input.value;
-    output.innerText = (parseInt(octal, 8)).toString(16).toUpperCase(); //(parseInt(text, 8)).toString(16);
-    output.style.border = "2px solid lightgreen";
+  if (!inputValueOctal){
+    success();
+    output.innerText = (parseInt(octal, 8)).toString(16).toUpperCase();
   } 
   else {
     err(); 
   }
 } else if(optionFrom.value == "octal" && optionTo.value == "binary") {
-  if (!isNaN(Number('0O' + input.value))){
-    output.style.color = "Black";
-    let octal = input.value;
-    output.innerText = (parseInt(octal, 8)).toString(2); //(parseInt(text, 8)).toString(2);
-    output.style.border = "2px solid lightgreen";
+  if (!inputValueOctal){
+   success();
+    output.innerText = (parseInt(octal, 8)).toString(2);
   } 
   else {
     err(); 
@@ -265,40 +233,35 @@ if(optionFrom.value == "octal" && optionTo.value == "decimal") {
 }
 
 // For Hexadecimal conversion
-if(optionFrom.value == "hexa" && optionTo.value == "decimal") {
+let hexa = input.value;
+//checking if the input value is alphanumeric and hex value or not.
+let inputValueHexa = isNaN(Number('0x' + input.value)); 
 
-    if (!isNaN(Number('0x' + input.value))){
-    output.style.color = "Black";
-    let hexa = input.value;
-    output.innerText +=  (parseInt(hexa, 16))
-    output.style.border = "2px solid lightgreen";
+if(optionFrom.value == "hexa" && optionTo.value == "decimal") {
+    if (!inputValueHexa){
+      success();
+    output.innerText +=  (parseInt(hexa, 16));
     } else {
       err();
     }
 } else if(optionFrom.value == "hexa" && optionTo.value == "octal") {
-    if (!isNaN(Number('0x' + input.value))){
-    output.style.color = "Black";
-    let hexa = input.value;
-    output.innerText +=  parseInt(hexa, 16).toString(8);
-    output.style.border = "2px solid lightgreen";
+    if (!inputValueHexa){
+      success();
+    output.innerText +=  parseInt(hexa, 16).toString(8); //toString read
     } else {
       err();
     }
 } else if(optionFrom.value == "hexa" && optionTo.value == "binary") {
-    if (!isNaN(Number('0x' + input.value))){
-    output.style.color = "Black";
-    let hexa = input.value;
+    if (!inputValueHexa){
+      success();
     output.innerText +=  (parseInt(hexa, 16)).toString(2);
-    output.style.border = "2px solid lightgreen";
     } else {
       err();
     }
 } else if(optionFrom.value == "hexa" && optionTo.value == "hexa") {
-    if (!isNaN(Number('0x' + input.value))){
-    output.style.color = "Black";
-    let hexa = input.value;
+    if (!inputValueHexa){
+    success();
     output.innerText +=  hexa.toUpperCase();
-    output.style.border = "2px solid lightgreen";
     } else {
       err();
     }
