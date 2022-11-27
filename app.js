@@ -37,11 +37,11 @@ day.addEventListener("click", function(){
 })
 night.addEventListener("click",function(){
   document.body.classList.add("nightWall");
-  document.body.classList.remove("dayWall");
   h1.classList.toggle('whiteFont');
   night.classList.add("reverse")
   day.classList.remove("reverse");
   container.classList.toggle("bgNight");
+  document.body.classList.remove("dayWall");
 })
 
 function err(){  

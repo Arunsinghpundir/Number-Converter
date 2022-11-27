@@ -181,9 +181,9 @@ label {
   transition: 2s;
 }
 .nightWall {
+  background-image: url(img/nightwall.jpg);
   color: #fff;
   transition: 2s;
-  background-image: url(img/nightwall.jpg);
 }
 .blackFont {
   color: black;
